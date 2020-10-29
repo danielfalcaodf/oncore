@@ -34,11 +34,10 @@ define("DATA_LAYER_CONFIG", [
 
 define("SOCIAL", [
 
-    "facebook_page" => "robsonvleite2",
-    "facebook_author" => "robsonvleite",
-    "facebook_appId" => "2193729837289",
-    "twitter_creator" => "@robsonvleite",
-    "twitter_site" => "@robsonvleite",
+    "facebook_page" => "",
+    "facebook_author" => "",
+    "facebook_appId" => "",
+    "twitter_creator" => "",
 
 
 ]);
@@ -47,12 +46,12 @@ define("SOCIAL", [
 
 define("MAIL", [
 
-    "host" => "smtp.sendgrid.net",
-    "port" => "587",
-    "user" => "apikey",
-    "passwd" => "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",
-    "from_name" => "Dev Jumbom",
-    "from_email" => "devjumbom@dev.jumbom.com.br",
+    "host" => "",
+    "port" => "",
+    "user" => "",
+    "passwd" => "",
+    "from_name" => "",
+    "from_email" => "",
 
 
 ]);
