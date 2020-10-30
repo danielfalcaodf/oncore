@@ -23,6 +23,12 @@ $router->post("/singin", "Auth:login", "auth.login");
 // $router->post("/register", "Auth:register", "auth.register");
 // $router->post("/forget", "Auth:forget", "auth.forget");
 // $router->post("/reset", "Auth:reset", "auth.reset");
+// FileSystems
+$router->group("/fylesystem");
+$router->get('/openfile/{path}/{file}', 'Fylesystem:openFile', 'fylesystem.openFile');
+$router->get('/openfolder/{folder}', 'Fylesystem:pathTo', 'fylesystem.pathTo');
+
+
 
 // profile
 // $router->group("/me");

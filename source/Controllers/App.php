@@ -3,7 +3,7 @@
 namespace Source\Controllers;
 
 use Source\Models\User;
-use League\Flysystem\StorageAttributes;
+
 
 /**
  * [Description App]
@@ -45,33 +45,23 @@ class App extends Controller
     public function filesystems(): void
     {
         // $this->user->first_name
-        $listing =
-            $this->filesystem->listContents('/');
-
         $head = $this->seo->optimize(
             "Gerenciador de arquivos | " . site("nome"),
             site("desc"),
             $this->router->route("app.filesystems"),
             routeImage("Gerenciador de arquivos"),
         )->render();
+        $path = '/';
+        $this->adapterInit($path);
+        $listing = $this->filesystem->listContents($path);
+        $listing = $this->listPathFiles($listing);
 
-        // echo $this->view->render("theme/system/filesystems/view", [
-        //     "head" => $head,
-        //     "user" => $this->user
-        // ]);
 
-        /** @var StorageAttributes $item */
-        foreach ($listing as $item) {
-            $path = $item->path();
-
-            if ($item instanceof \League\Flysystem\FileAttributes) {
-                // handle the file
-                echo  $path . '<br>';
-            } elseif ($item instanceof \League\Flysystem\DirectoryAttributes) {
-                // handle the directory
-                echo  $path . '<br>';
-            }
-        }
+        echo $this->view->render("theme/system/filesystems/view", [
+            "head" => $head,
+            "path" => $path,
+            "listpath" =>  $listing
+        ]);
     }
     public function login(): void
     {

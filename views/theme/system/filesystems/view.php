@@ -37,15 +37,19 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row justify-content-end">
-                            <div class="col-3 align-self-end">
+                            <div class="col-md-3 align-self-end">
                                 <button type="button" class="btn btn-primary ">Upload</button>
 
 
                                 <button type="button" class="btn btn-primary ">Novo Item</button>
                             </div>
                         </div>
-
-                        <table class="table table-striped">
+                        <nav class="breadcrumb">
+                            <a class="breadcrumb-item" href="#"></a>
+                            <a class="breadcrumb-item" href="#"></a>
+                            <span class="breadcrumb-item active"></span>
+                        </nav>
+                        <table id="filesystem" class="table table-striped">
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" name="" id="" autocomplete="off"></th>
@@ -56,18 +60,44 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+
+                                foreach ($listpath as $key => $arr) :
+
+
+                                    foreach ($arr as $index => $value) :
+
+                                        $img = ($key == 'dir') ?  'fas fa-folder' : fm_get_file_icon_class($value['name']);
+                                        $typeSize = ($key == 'dir') ?  'Pasta' : fm_get_filesize($value['size']);
+
+                                        $lastDate =  date('d/m/y à\s h:m:s', $value['lastModified']);
+                                        $href = ($key == 'dir') ?
+                                            $router->route('fylesystem.pathTo', ['folder' => urlencode($value['name'])])
+                                            : $router->route('fylesystem.openFile', ['path' => urlencode($path), 'file' => $value['name']])
+
+                                ?>
+
                                 <tr>
+
+
                                     <td>
-                                        <input type="checkbox" name="" id="" checked autocomplete="off">
+                                        <input type="checkbox" name="" id="" autocomplete="off">
                                     </td>
 
-                                    <td>Lunar probe project</td>
                                     <td>
-                                        <div class="progress progress-xs margin-vertical-10 ">
-                                            <div class="progress-bar bg-danger" style="width: 35% ;height:6px;"></div>
+
+                                        <div class="filename">
+                                            <a name="" id="" class="btn btn-outline-gray filepath" href="<?= $href ?>"
+                                                role="button">
+                                                <i class="<?= $img ?>"></i>
+                                                <?= $value['name'] ?>
+                                            </a>
                                         </div>
                                     </td>
-                                    <td>May 15, 2015</td>
+                                    <td>
+                                        <?= $typeSize ?>
+                                    </td>
+                                    <td><?= $lastDate ?></td>
                                     <td class="text-nowrap">
                                         <a href="#" data-toggle="tooltip" data-original-title="Edit"
                                             aria-describedby="tooltip769723"> <i
@@ -75,8 +105,15 @@
                                         <a href="#" data-toggle="tooltip" data-original-title="Close"> <i
                                                 class="fas fa-times text-danger"></i> </a>
                                     </td>
+
+
+
+
                                 </tr>
 
+
+                                <?php endforeach;
+                                endforeach ?>
 
 
 
@@ -89,16 +126,18 @@
                                 <tr>
                                     <td class="gray" rowspan="1" colspan="1"></td>
                                     <td class="gray" colspan="4" rowspan="1">
-                                        tamanho completo: <span class="badge badge-light">34.66 KB</span> Arquivo: <span
-                                            class="badge badge-light">4</span> Pasta: <span
+                                        tamanho completo: <span class="badge badge-light">34.66 KB</span> Arquivo:
+                                        <span class="badge badge-light">4</span> Pasta: <span
                                             class="badge badge-light">31</span> Memória usada: <span
                                             class="badge badge-light">4 MB</span> Tamanho da partição: <span
                                             class="badge badge-light">162.14 GB</span> Livre de <span
-                                            class="badge badge-light">465.13 GB</span> </td>
+                                            class="badge badge-light">465.13 GB</span>
+                                    </td>
                                 </tr>
                             </tfoot>
 
                         </table>
+
                         <div class="row">
                             <div class="col-12">
                                 <ul class="list-inline footer-action ">
@@ -156,7 +195,7 @@
         <!-- ============================================================== -->
         <!-- ============================================================== -->
 
-        <script src="<?= asset("custom.js") ?>"></script>
+        <script src="<?= asset("js/filesystems/custom.js") ?>"></script>
 
 
         <?php $v->end(); ?>

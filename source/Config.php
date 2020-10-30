@@ -9,6 +9,13 @@ define("SITE", [
     "root" => "https://localhost/oncore"
 
 ]);
+//root OS
+$root = '/';
+if (PHP_OS == "WINNT") {
+    # code...
+    $root = "C:\\xampp";
+}
+define('ROOT_OS',  $root);
 // site minify
 if ($_SERVER['SERVER_NAME'] == "localhost") {
     require __DIR__ . "/Minify.php";
