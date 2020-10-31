@@ -25,7 +25,7 @@ abstract class Controller
     protected $seo;
     /** @var Flysystem */
     protected $filesystem;
-    protected $root;
+    public $root;
 
 
     /**
@@ -48,14 +48,15 @@ abstract class Controller
     }
 
     /**
-     * @param string $param
      * @param array $values
+     * @param string $status
      * 
      * @return string
      */
-    public function ajaxResponse(string $param, array $values): string
+    public function ajaxResponse(array $values, int $status = 200): string
     {
-        return json_encode([$param => $values]);
+        http_response_code($status);
+        return json_encode($values);
     }
     public function adapterInit($root)
     {

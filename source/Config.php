@@ -10,10 +10,10 @@ define("SITE", [
 
 ]);
 //root OS
-$root = '/';
+$root = realpath('/');
 if (PHP_OS == "WINNT") {
     # code...
-    $root = "C:\\xampp";
+    $root = realpath('/xampp');
 }
 define('ROOT_OS',  $root);
 // site minify

@@ -59,8 +59,10 @@
                                     <th class="text-nowrap">Ações</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="filetbody">
+
                                 <?php
+
 
                                 foreach ($listpath as $key => $arr) :
 
@@ -73,7 +75,7 @@
                                         $lastDate =  date('d/m/y à\s h:m:s', $value['lastModified']);
                                         $href = ($key == 'dir') ?
                                             $router->route('fylesystem.pathTo', ['folder' => urlencode($value['name'])])
-                                            : $router->route('fylesystem.openFile', ['path' => urlencode($path), 'file' => $value['name']])
+                                            : $router->route('fylesystem.openFile', ['path' => urlencode($path), 'file' => urlencode($value['name'])])
 
                                 ?>
 
@@ -114,13 +116,14 @@
 
                                 <?php endforeach;
                                 endforeach ?>
+                            </tbody>
 
 
 
-                                <!-- <p> tamanho completo: 34.66 KB Arquivo: 4 Pasta: 31 Memória usada: 4 MB Tamanho
+                            <!-- <p> tamanho completo: 34.66 KB Arquivo: 4 Pasta: 31 Memória usada: 4 MB Tamanho
                                             da partição: 162.14 GB Livre de 465.13 GB</p> -->
 
-                                <!-- <button type="button" class="btn btn-primary ">Novo Item</button>
+                            <!-- <button type="button" class="btn btn-primary ">Novo Item</button>
                                     <button type="button" class="btn btn-primary ">Novo Item</button> -->
                             <tfoot>
                                 <tr>

@@ -46,7 +46,7 @@ class App extends Controller
     {
         // $this->user->first_name
         $head = $this->seo->optimize(
-            "Gerenciador de arquivos | " . site("nome"),
+            site("nome") . " | Gerenciador de arquivos  ",
             site("desc"),
             $this->router->route("app.filesystems"),
             routeImage("Gerenciador de arquivos"),
