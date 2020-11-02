@@ -27,6 +27,7 @@ $router->post("/singin", "Auth:login", "auth.login");
 $router->group("/fylesystem");
 $router->get('/openfile/{path}/{file}', 'Fylesystem:openFile', 'fylesystem.openFile');
 $router->get('/openfolder/{folder}', 'Fylesystem:pathTo', 'fylesystem.pathTo');
+$router->get('/pathBack', 'Fylesystem:pathBack', 'fylesystem.pathBack');
 
 
 

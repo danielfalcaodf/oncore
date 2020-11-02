@@ -52,7 +52,7 @@ class App extends Controller
             routeImage("Gerenciador de arquivos"),
         )->render();
         $path = '/';
-        $this->adapterInit($path);
+        $this->adapterInit();
         $listing = $this->filesystem->listContents($path);
         $listing = $this->listPathFiles($listing);
 
@@ -60,6 +60,7 @@ class App extends Controller
         echo $this->view->render("theme/system/filesystems/view", [
             "head" => $head,
             "path" => $path,
+            "root" => $this->root,
             "listpath" =>  $listing
         ]);
     }

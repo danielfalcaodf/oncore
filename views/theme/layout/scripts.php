@@ -24,6 +24,7 @@
 <script src="<?= asset('/node_modules/switchery/dist/switchery.min.js') ?>"></script>
 <!-- slimscrollbar scrollbar JavaScript -->
 <script src="<?= asset('/node_modules/dropify/dist/js/dropify.min.js') ?>"></script>
+<script src="<?= asset('/js/animated.js') ?>"></script>
 <!-- MASK -->
 <script src="<?= asset('/js/jquery.mask.js') ?>"></script>
 <script src="<?= asset('/js/buscaCep.js') ?>"></script>

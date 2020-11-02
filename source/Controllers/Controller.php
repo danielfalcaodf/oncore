@@ -44,7 +44,7 @@ abstract class Controller
         // ->facebook(SOCIAL["facebook_appId"]);
 
 
-        $this->adapterInit(ROOT_OS);
+        $this->adapterInit();
     }
 
     /**
@@ -58,7 +58,7 @@ abstract class Controller
         http_response_code($status);
         return json_encode($values);
     }
-    public function adapterInit($root)
+    public function adapterInit($root = ROOT_OS)
     {
         $this->root =  ($root == ROOT_OS) ? $root : ROOT_OS . '/' . $root;
         $adapter = new LocalFilesystemAdapter($this->root);
